@@ -5,16 +5,31 @@ class Counters extends Component{
     state = {
         counters:[
             { id:1 ,value:1},
-            { id:1 ,value:2},
-            { id:1 ,value:3},
-            { id:1 ,value:4},
+            { id:2 ,value:2},
+            { id:3 ,value:3},
+            { id:4 ,value:4},
          ]
-    } 
+    } ; 
+
+    handleReset =() =>{
+      const counters = this.state.counters.map(c=>{
+          c.value =0; 
+          return c;
+      });
+      this.setState({counters});
+    };
     render()
     {
         return(
             <div> 
-                {this.state.counters.map(counter=><Counter key={counter.id} value={counter.value}/>)}
+                <button className="btn btn-primary btn-sm m-2">RESET BUTTON</button>
+                {/*   {this.state.counters.map(counter=><Counter key={counter.id} countervalue={counter.value}/>) } */} 
+                
+               {this.state.counters.map(counter => (
+                    <Counter key= {counter.id} value={counter.value}>
+                    <h1>Counter #{counter.id}</h1> 
+                    </Counter> ))
+                  } 
             </div>
         );
     }
