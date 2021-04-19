@@ -6,7 +6,7 @@ class Counter extends Component {
     // compare old state with new state , old props with the new props 
     //if there is a change we can make  a ajax request  to get the new data from the server  
     //if there is no change no request 
-    componentDidUpdate(prevprops , prevstate)
+    componentDidUpdate(prevProps , prevState)
     {
         console.log('prevProps', prevProps); 
         console.log('prevState', prevState);
@@ -14,6 +14,10 @@ class Counter extends Component {
         {
             //Axaj call and get new data from the server 
         }
+    } 
+    componentWillUnmount(){
+        //to clean up , cleanup timers , or listerns , else we will endup with memory leaks 
+        console.log('Counter-Unmount');
     }
     render() {
         
