@@ -6,12 +6,13 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css'; 
 import Counter from './components/counter'; 
 import Counters from './components/counters';
-import NavBar from './components/navbar';
+import NavBar from './components/navbar'; 
+
+
 
 ReactDOM.render(
-  <React.StrictMode> 
-    <NavBar/>
-    <Counters/>
+  <React.StrictMode>  
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
