@@ -1,5 +1,6 @@
 import  React ,{Component} from 'react' 
-import {getMovies} from '../services/fakeMovieService';
+import {getMovies} from '../services/fakeMovieService'; 
+import Like from './like';
 class Movies extends  Component
 {
     state={
@@ -20,15 +21,18 @@ class Movies extends  Component
               //<h1> {name} </h1> 
              // <h1> {this.state.count}</h1> 
              // <h1>{'my Name is ${name}'}</h1> 
-       //<h1>Hello React</h1>  
-
+       //<h1>Hello React</h1>   
+       <React.Fragment>
+<h3> Showing {this.state.movies.length} movies in the database </h3>
        <table className="table">
            <thead>
                <tr>
                    <th>title</th> 
                    <th> Genre</th>
                    <th>Stock</th>
-                   <th>Rate</th>
+                   <th>Rate</th> 
+                   <th>Like</th> 
+                   <th>Actions</th>
                </tr>
            </thead> 
            <tbody> 
@@ -37,7 +41,8 @@ class Movies extends  Component
                 <td>{movie.title}</td>
                 <td>{movie.genre.name}</td> 
                 <td>{movie.numberInStock}</td>
-                <td>{movie.dailyRentalRate}</td> 
+                <td>{movie.dailyRentalRate}</td>  
+                <td><Like /></td>
                 <td><button onClick={() => this.handleDelete(movie)} className="btn btn-danger btn-sm">Delete</button></td>
                 
             </tr>
@@ -46,7 +51,7 @@ class Movies extends  Component
                
            </tbody>
        </table>
-
+  </React.Fragment>
 
 
         );
