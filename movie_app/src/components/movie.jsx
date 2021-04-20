@@ -1,11 +1,13 @@
 import  React ,{Component} from 'react' 
 import {getMovies} from '../services/fakeMovieService'; 
 import Like from './like'; 
-import Pagination from './pagination';
+import Pagination from '../common/pagination'; 
+import {Paginate} from '../utils/paginate';
 class Movies extends  Component
 {
     state={
         movies:getMovies(), 
+        currentPage:1,
         pageSize:4
      };  
 
@@ -25,13 +27,18 @@ class Movies extends  Component
          })
         }
 
-     handlePageChange =() => {
-         console.log("page changed");
+     handlePageChange =(page) => {
+        // console.log("page changed"); 
+        this.setState({
+          currentPage:page
+        })
      }
      
     render()
     {  
-        const{length:count} =this.state.movies
+        const{length:count} =this.state.movies 
+        const {pageSize, currentPage, movies: allMovies } = this.state; 
+        const movies = Paginate(allMovies,currentPage,pageSize);
         if(this.state.movies.length === 0 )return <p>There is no movies in the database</p>;
          return(
            // <h1> Movies List</h1> 
@@ -41,7 +48,7 @@ class Movies extends  Component
              // <h1>{'my Name is ${name}'}</h1> 
        //<h1>Hello React</h1>   
        <React.Fragment>
-<h3> Showing {this.state.movies.length} movies in the database </h3>
+<h3> Showing {this.state.movies.length } movies in the database </h3>
        <table className="table">
            <thead>
                <tr>
@@ -54,7 +61,7 @@ class Movies extends  Component
                </tr>
            </thead> 
            <tbody> 
-               {this.state.movies.map(movie =>(
+               {movies.map(movie =>(
                 <tr key={movie._id}>
                 <td>{movie.title}</td>
                 <td>{movie.genre.name}</td> 
