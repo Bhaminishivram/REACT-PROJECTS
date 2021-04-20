@@ -1,10 +1,12 @@
 import React,{Component} from 'react'; 
 
 class Like extends Component{
-    render(){
+    render(){ 
+        let classes = "fa fa-heart"; 
+        if(!this.props.likeStatus) classes+='-o' 
         return (
-            <i className ="fa fa-heart-o" onClick={this.props.onLikebutton}></i>
-        )
+            <i className={classes} onClick={this.props.onLikebutton}></i>
+        );
     } 
 } 
 export default Like; 
