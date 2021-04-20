@@ -5,14 +5,14 @@ import Pagination from './pagination';
 class Movies extends  Component
 {
     state={
-        movies: getMovies(), 
+        movies:getMovies(), 
         pageSize:4
      };  
 
      handleLike = (movie) => {
      // console.log("Liked "); 
      const movies =[...this.state.movies]; 
-     const index = movies. indexOf(movie); 
+     const index = movies.indexOf(movie); 
      movies[index]= {...movies[index]}; 
      movies[index].liked = !movies[index].liked; 
      this.setState({movies});
