@@ -8,7 +8,9 @@ const list_group = (props) => {
             //     > <a href="#" class="list-group-item list-group-item-action">1</a>
             //    </div 
                <ul>
-                   {props.items.map(item => <li href="#" class="list-group-item list-group-item-action">{item.name}</li>)}
+                   {props.items.map(item => <li key={item._id} 
+                   class="list-group-item list-group-item-action" onClick={props.onGenreSelect}>
+                       {item.name}</li>)}
               
                </ul> 
            );

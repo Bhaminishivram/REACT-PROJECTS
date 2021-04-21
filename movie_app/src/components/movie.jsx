@@ -22,6 +22,9 @@ class Movies extends  Component
                  genres:getGenres()
              }
          )
+     } 
+     handleGenreSelect =()=> {
+         console.log('GenereSelected');
      }
 
      handleLike = (movie) => {
@@ -64,7 +67,7 @@ class Movies extends  Component
               <div style={{marginTop:30}}>
                <div className="row">
                    <div className="col-3">
-                    <List_group items={this.state.genres}/>
+                    <List_group items={this.state.genres}  onGenreSelect={this.handleGenreSelect}/>
                    </div>
                    <div className="col">
              <h3> Showing {this.state.movies.length } movies in the database </h3>
