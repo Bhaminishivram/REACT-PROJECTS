@@ -4,14 +4,25 @@ import Like from './like';
 import Pagination from '../common/pagination'; 
 import {Paginate} from '../utils/paginate';  
 import List_group from  '../common/list_group';
+import { getGenres } from '../services/fakeGenreService';
 
 class Movies extends  Component
 {
     state={
-        movies:getMovies(), 
+       // movies:getMovies(),  
+        movies:[], 
+        genres:[],
         currentPage:1,
         pageSize:4
-     };  
+     };   
+     componentDidMount(){
+         this.setState(
+             {
+                 movies:getMovies(), 
+                 genres:getGenres()
+             }
+         )
+     }
 
      handleLike = (movie) => {
      // console.log("Liked "); 
@@ -50,13 +61,13 @@ class Movies extends  Component
              // <h1>{'my Name is ${name}'}</h1> 
        //<h1>Hello React</h1>   
        <React.Fragment>
-           <div style={{marginTop:30}}>
+              <div style={{marginTop:30}}>
                <div className="row">
                    <div className="col-3">
-                    <List_group />
+                    <List_group items={this.state.genres}/>
                    </div>
                    <div className="col">
-                   <h3> Showing {this.state.movies.length } movies in the database </h3>
+             <h3> Showing {this.state.movies.length } movies in the database </h3>
        <table className="table">
            <thead>
                <tr>
