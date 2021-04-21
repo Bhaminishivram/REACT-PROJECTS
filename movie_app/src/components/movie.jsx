@@ -6,7 +6,7 @@ import {Paginate} from '../utils/paginate';
 import List_group from  '../common/list_group';
 import { getGenres } from '../services/fakeGenreService';
 import MoviesTable from './moviestable'; 
-
+import _ from 'lodash'; 
 class Movies extends  Component
 {
     state={
@@ -14,7 +14,8 @@ class Movies extends  Component
         movies:[], 
         genres:[],
         currentPage:1,
-        pageSize:4
+        pageSize:4, 
+        sortColumn:{path:'title',order:'asc'}
      };   
      componentDidMount(){ 
        const genres =[{_id:"",name:"All Genres"}, ...getGenres()]
@@ -63,9 +64,10 @@ class Movies extends  Component
     render()
     {  
         const{length:count} =this.state.movies 
-        const {pageSize, currentPage, movies: allMovies, selectedGenre} = this.state;  
+        const {pageSize, currentPage, movies: allMovies, selectedGenre, sortColumn} = this.state;  
         const filtered =selectedGenre && selectedGenre._id ? allMovies.filter(m => m.genre._id === selectedGenre._id): allMovies;
-        const movies = Paginate( filtered,currentPage,pageSize);
+        const sorted = _.orderBy(filtered,[sortColumn.path],[sortColumn.order]);
+        const movies = Paginate( sorted,currentPage,pageSize);
         if(this.state.movies.length === 0 )return <p>There is no movies in the database</p>;
      return(
            // <h1> Movies List</h1> 
