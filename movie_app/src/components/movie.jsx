@@ -76,7 +76,12 @@ class Movies extends  Component
                
            </tbody>
        </table> 
-       <Pagination itemsCount={count} pageSize={this.state.pageSize} onPageChange={this.handlePageChange}/> 
+       <Pagination 
+      itemsCount={count}  
+     // itemsCount = "abc" //this is to check propsType Error  
+    currentPage = {this.state.currentPage}
+    pageSize={this.state.pageSize}
+    onPageChange={this.handlePageChange}/> 
   </React.Fragment>
 
 
