@@ -24,7 +24,10 @@ class Movies extends  Component
          )
      } 
      handleGenreSelect =(genre)=> {
-         console.log(genre);
+        //console.log('genreselected') 
+        this.setState({
+            selectedGenre :genre
+        })
      }
 
      handleLike = (movie) => {
@@ -53,10 +56,11 @@ class Movies extends  Component
     render()
     {  
         const{length:count} =this.state.movies 
-        const {pageSize, currentPage, movies: allMovies } = this.state; 
-        const movies = Paginate(allMovies,currentPage,pageSize);
+        const {pageSize, currentPage, movies: allMovies, selectedGenre} = this.state;  
+        const filtered = selectedGenre ? allMovies.filter(m => m.genre._id === selectedGenre._id): allMovies;
+        const movies = Paginate( filtered,currentPage,pageSize);
         if(this.state.movies.length === 0 )return <p>There is no movies in the database</p>;
-         return(
+     return(
            // <h1> Movies List</h1> 
               // <h1> {2*2*6}</h1> //regular experssion in react js  
               //<h1> {name} </h1> 
@@ -67,10 +71,13 @@ class Movies extends  Component
               <div style={{marginTop:30}}>
                <div className="row">
                    <div className="col-3">
-                    <List_group items={this.state.genres}  onGenreSelect={this.handleGenreSelect}/>
+                    <List_group items={this.state.genres} 
+                     onGenreSelect={this.handleGenreSelect}
+                     //selectedItem ={this.state.selectedGenre}
+                     />
                    </div>
                    <div className="col">
-             <h3> Showing {this.state.movies.length } movies in the database </h3>
+             <h3> Showing {filtered.length } movies in the database </h3>
        <table className="table">
            <thead>
                <tr>
