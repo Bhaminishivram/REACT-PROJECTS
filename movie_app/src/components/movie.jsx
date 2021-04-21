@@ -28,7 +28,8 @@ class Movies extends  Component
      handleGenreSelect =(genre)=> {
         //console.log('genreselected') 
         this.setState({
-            selectedGenre :genre
+            selectedGenre :genre ,
+            currentPage:1
         })
      }
 
@@ -59,7 +60,7 @@ class Movies extends  Component
     {  
         const{length:count} =this.state.movies 
         const {pageSize, currentPage, movies: allMovies, selectedGenre} = this.state;  
-        const filtered = selectedGenre ? allMovies.filter(m => m.genre._id === selectedGenre._id): allMovies;
+        const filtered =selectedGenre && selectedGenre._id ? allMovies.filter(m => m.genre._id === selectedGenre._id): allMovies;
         const movies = Paginate( filtered,currentPage,pageSize);
         if(this.state.movies.length === 0 )return <p>There is no movies in the database</p>;
      return(
@@ -75,7 +76,9 @@ class Movies extends  Component
                    <div className="col-3">
                     <List_group items={this.state.genres} 
                      onGenreSelect={this.handleGenreSelect}
-                     selectedItem ={this.state.selectedGenre}
+                     selectedItem ={this.state.selectedGenre} 
+                     textProperty = "name"
+                     valueProperty = "_id"
                      />
                    </div>
                    <div className="col">
