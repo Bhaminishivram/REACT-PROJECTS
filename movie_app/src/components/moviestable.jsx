@@ -5,12 +5,12 @@ const moviesTable = (props) => {
         <table className="table">
            <thead>
                <tr>
-                   <th onClick={onSort}>title</th> 
-                   <th onClick={onSort}> Genre</th>
-                   <th onClick={onSort}>Stock</th>
-                   <th onClick={onSort}>Rate</th> 
-                   <th onClick={onSort}>Like</th> 
-                   <th onClick={onSort}>Actions</th>
+                   <th onClick={()=>onSort("title")}>title</th> 
+                   <th onClick={()=>onSort("genre.name")}> Genre</th>
+                   <th onClick={()=>onSort("numberInstock")}>Stock</th>
+                   <th onClick={()=>onSort('dailyReantalRate')}>Rate</th> 
+                   <th onClick>Like</th> 
+                   <th onClick>Actions</th>
                </tr>
            </thead> 
            <tbody> 

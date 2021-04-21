@@ -55,9 +55,10 @@ class Movies extends  Component
         this.setState({
           currentPage:page
         })
-     }
-     handleSort =() => {
-         console.log("sort");
+     } 
+
+     handleSort =(path) => {
+         console.log(path);
      } 
     render()
     {  
