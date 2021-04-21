@@ -56,7 +56,9 @@ class Movies extends  Component
           currentPage:page
         })
      }
-     
+     handleSort =() => {
+         console.log("sort");
+     } 
     render()
     {  
         const{length:count} =this.state.movies 
@@ -84,7 +86,9 @@ class Movies extends  Component
                    </div>
                    <div className="col">
              <h3> Showing {filtered.length } movies in the database </h3> 
-             <MoviesTable movies={movies} onLike={this.handleLike} onDelete={this.handleDelete}/> 
+             <MoviesTable movies={movies} onLike={this.handleLike} 
+             onDelete={this.handleDelete} 
+             onSort={this.handleSort}/> 
        {/* <table className="table">
            <thead>
                <tr>
