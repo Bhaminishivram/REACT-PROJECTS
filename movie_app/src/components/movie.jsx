@@ -5,6 +5,7 @@ import Pagination from '../common/pagination';
 import {Paginate} from '../utils/paginate';  
 import List_group from  '../common/list_group';
 import { getGenres } from '../services/fakeGenreService';
+import MoviesTable from './moviestable'; 
 
 class Movies extends  Component
 {
@@ -82,8 +83,9 @@ class Movies extends  Component
                      />
                    </div>
                    <div className="col">
-             <h3> Showing {filtered.length } movies in the database </h3>
-       <table className="table">
+             <h3> Showing {filtered.length } movies in the database </h3> 
+             <MoviesTable movies={movies} onLike={this.handleLike} onDelete={this.handleDelete}/> 
+       {/* <table className="table">
            <thead>
                <tr>
                    <th>title</th> 
@@ -110,7 +112,7 @@ class Movies extends  Component
                
            </tbody>
        </table>  
-    
+     */}
        <Pagination
       itemsCount={filtered.length}  
      // itemsCount = "abc" //this is to check propsType Error  

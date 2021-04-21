@@ -1,7 +1,7 @@
 // import React ,{Component} from 'react';   
   import React from 'react';
-  
-const list_group = (props) => {
+
+    const list_group = (props) => {
     const{items,valueProperty,onGenreSelect,selectedItem, textProperty} = props;
     return ( 
             // <div class="list-group">
