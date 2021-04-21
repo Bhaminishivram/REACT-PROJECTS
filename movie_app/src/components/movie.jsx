@@ -2,7 +2,9 @@ import  React ,{Component} from 'react'
 import {getMovies} from '../services/fakeMovieService'; 
 import Like from './like'; 
 import Pagination from '../common/pagination'; 
-import {Paginate} from '../utils/paginate';
+import {Paginate} from '../utils/paginate';  
+import List_group from  '../common/list_group';
+
 class Movies extends  Component
 {
     state={
@@ -48,7 +50,13 @@ class Movies extends  Component
              // <h1>{'my Name is ${name}'}</h1> 
        //<h1>Hello React</h1>   
        <React.Fragment>
-<h3> Showing {this.state.movies.length } movies in the database </h3>
+           <div style={{marginTop:30}}>
+               <div className="row">
+                   <div className="col-3">
+                    <List_group />
+                   </div>
+                   <div className="col">
+                   <h3> Showing {this.state.movies.length } movies in the database </h3>
        <table className="table">
            <thead>
                <tr>
@@ -75,14 +83,22 @@ class Movies extends  Component
                ))}
                
            </tbody>
-       </table> 
-       <Pagination 
+       </table>  
+    
+       <Pagination
       itemsCount={count}  
      // itemsCount = "abc" //this is to check propsType Error  
     currentPage = {this.state.currentPage}
     pageSize={this.state.pageSize}
     onPageChange={this.handlePageChange}/> 
-  </React.Fragment>
+                   </div>
+               </div>
+           </div>
+
+
+        
+
+  </React.Fragment> 
 
 
         );
