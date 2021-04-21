@@ -1,4 +1,5 @@
-import React ,{Component} from 'react';   
+// import React ,{Component} from 'react';   
+  import React from 'react';
   
 const list_group = (props) => {
     const{items,valueProperty,onGenreSelect,selectedItem, textProperty} = props;
@@ -18,8 +19,9 @@ const list_group = (props) => {
               
            </ul> 
            ); 
-                }
-           list_group.defaultProps ={
+                } 
+                //default property 
+               list_group.defaultProps ={
                textProperty:"name",
                valueProperty:"_id"
         

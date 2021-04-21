@@ -16,7 +16,7 @@ class Movies extends  Component
         pageSize:4
      };   
      componentDidMount(){ 
-       const genres =[{name:"All Genres"}, ...getGenres()]
+       const genres =[{_id:"",name:"All Genres"}, ...getGenres()]
 
          this.setState(
              {
@@ -112,7 +112,7 @@ class Movies extends  Component
        </table>  
     
        <Pagination
-      itemsCount={count}  
+      itemsCount={filtered.length}  
      // itemsCount = "abc" //this is to check propsType Error  
     currentPage = {this.state.currentPage}
     pageSize={this.state.pageSize}
