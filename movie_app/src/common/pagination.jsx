@@ -1,4 +1,7 @@
-import React ,{Component} from 'react';  
+import React ,{Component} from 'react';   
+ 
+ // _ is the common convention 
+ // lodash is the optimised version of a popular js library called underscore  
 import _ from 'lodash';
 
 const Pagination = (props) => { 
