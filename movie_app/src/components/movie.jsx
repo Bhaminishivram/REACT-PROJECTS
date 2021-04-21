@@ -23,8 +23,8 @@ class Movies extends  Component
              }
          )
      } 
-     handleGenreSelect =()=> {
-         console.log('GenereSelected');
+     handleGenreSelect =(genre)=> {
+         console.log(genre);
      }
 
      handleLike = (movie) => {
