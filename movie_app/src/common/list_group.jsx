@@ -10,8 +10,8 @@ const list_group = (props) => {
                <ul>
                    {props.items.map(item => 
                    <li key={item._id} 
-                   class="list-group-item list-group-item-action"
-                    onClick={()=>props.onGenreSelect(item)}>
+                   className={item===props.selectedItem? "list-group-item active" :"list-group-item"}
+                   onClick={()=>props.onGenreSelect(item)}>
                        {item.name}
                        </li>)}
               

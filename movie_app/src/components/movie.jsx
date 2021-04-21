@@ -73,7 +73,7 @@ class Movies extends  Component
                    <div className="col-3">
                     <List_group items={this.state.genres} 
                      onGenreSelect={this.handleGenreSelect}
-                     //selectedItem ={this.state.selectedGenre}
+                     selectedItem ={this.state.selectedGenre}
                      />
                    </div>
                    <div className="col">
