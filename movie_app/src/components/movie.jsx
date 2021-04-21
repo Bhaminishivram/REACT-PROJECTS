@@ -15,11 +15,13 @@ class Movies extends  Component
         currentPage:1,
         pageSize:4
      };   
-     componentDidMount(){
+     componentDidMount(){ 
+       const genres =[{name:"All Genres"}, ...getGenres()]
+
          this.setState(
              {
                  movies:getMovies(), 
-                 genres:getGenres()
+                 genres:genres
              }
          )
      } 
