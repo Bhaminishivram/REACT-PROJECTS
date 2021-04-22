@@ -1,10 +1,8 @@
 // import React ,{Component} from 'react';   
- 
  // _ is the common convention 
  // lodash is the optimised version of a popular js library called underscore  
 import _ from 'lodash'; 
 import PropTypes from 'prop-types'; 
-
 
 const Pagination = (props) => { 
   
