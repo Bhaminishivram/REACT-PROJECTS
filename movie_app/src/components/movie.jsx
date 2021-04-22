@@ -61,16 +61,28 @@ handleSort =(sortColumn) => {
     this.setState({
         sortColumn
     })
-}
+} 
+
+
+getPagedData =()=>{
+    const {pageSize,currentPage,movies:allMovies,selectedGenre,sortColumn} =this.state;
+    const filtered =selectedGenre && selectedGenre._id ? allMovies.filter(m => m.genre._id === selectedGenre._id): allMovies;
+    const sorted = _.orderBy(filtered,[sortColumn.path],[sortColumn.order]);
+    const movies = Paginate( sorted,currentPage,pageSize); 
+
+     return{totalCount:filtered.length, data:movies,  pageSize, currentPage, sortColumn}
+} 
+
      
     render()
     {  
-        const{length:count} =this.state.movies 
-        const {pageSize, currentPage, movies: allMovies, selectedGenre, sortColumn} = this.state;  
-        const filtered =selectedGenre && selectedGenre._id ? allMovies.filter(m => m.genre._id === selectedGenre._id): allMovies;
-        const sorted = _.orderBy(filtered,[sortColumn.path],[sortColumn.order]);
-        const movies = Paginate( sorted,currentPage,pageSize);
-        if(this.state.movies.length === 0 )return <p>There is no movies in the database</p>;
+        // const{length:count} =this.state.movies 
+        // const {pageSize, currentPage, movies: allMovies, selectedGenre, sortColumn} = this.state;  
+        // const filtered =selectedGenre && selectedGenre._id ? allMovies.filter(m => m.genre._id === selectedGenre._id): allMovies;
+        // const sorted = _.orderBy(filtered,[sortColumn.path],[sortColumn.order]);
+        // const movies = Paginate( sorted,currentPage,pageSize);
+      if(this.state.movies.length === 0 )return <p>There is no movies in the database</p>; 
+      const {totalCount,data,sortColumn, pageSize, currentPage}= this.getPagedData();
      return(
            // <h1> Movies List</h1> 
               // <h1> {2*2*6}</h1> //regular experssion in react js  
@@ -90,10 +102,10 @@ handleSort =(sortColumn) => {
                      />
                    </div>
                    <div className="col">
-             <h3> Showing {filtered.length } movies in the database </h3> 
+             <h3> Showing {totalCount} movies in the database </h3> 
              <MoviesTable
              sortColumn={sortColumn} 
-             movies={movies} 
+             movies={data} 
              onLike={this.handleLike} 
              onDelete={this.handleDelete} 
              onSort={this.handleSort}/> 
@@ -126,7 +138,7 @@ handleSort =(sortColumn) => {
        </table>  
      */}
        <Pagination
-      itemsCount={filtered.length}  
+      itemsCount={totalCount}  
      // itemsCount = "abc" //this is to check propsType Error  
     currentPage = {this.state.currentPage}
     pageSize={this.state.pageSize}
