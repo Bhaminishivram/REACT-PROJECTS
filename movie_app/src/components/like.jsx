@@ -2,10 +2,10 @@ import  React ,{Component} from 'react' ;
  
   // functional components 
 const Like = (props) => { 
-    let classes = "fa fa-heart"; 
+    let classes = "clickable fa fa-heart"; 
     if(!props.likeStatus) classes+= '-o';
     return ( 
-        <i className={classes} onClick={props.onLikebutton} style ={{cursor:'pointer'}}></i>
+        <i className={classes} onClick={props.onLikebutton} ></i>
      );
 }
  
