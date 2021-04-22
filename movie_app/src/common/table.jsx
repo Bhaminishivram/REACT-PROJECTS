@@ -3,7 +3,7 @@ import Tableheader from '../common/header';
 import TableBody from '../common/tableBody'; 
 const Table = (props) => { 
     const{onSort,data,columns,sortColumn}= props;
-    return ( 
+    return( 
         <table className="table">
            
             <Tableheader 
@@ -12,7 +12,8 @@ const Table = (props) => {
             onSort = {onSort}
             /> 
 
-            <TableBody data={data} columns={this.columns} /> 
+            <TableBody data={data} columns={columns} /> 
+
             </table>  
      );
 }
