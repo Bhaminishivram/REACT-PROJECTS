@@ -39,7 +39,7 @@ class MoviesTable extends Component {
             onSort = {onSort}
             /> 
 
-            <TableBody data={movies} columns={this.columns}/>
+            <TableBody data={movies} columns={this.columns} />
 
 
 
