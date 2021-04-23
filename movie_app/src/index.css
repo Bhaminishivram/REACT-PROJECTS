@@ -10,7 +10,12 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+} 
+
+.Navbar{
+  margin-bottom: 50px;
 }
+
 .clickable{
   cursor: pointer;
 }
