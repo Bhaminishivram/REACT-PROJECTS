@@ -34,7 +34,7 @@ class App extends Component {
     } 
 
   // react will schedule a call with the render method once it see setstate , all childer elements will also gets 
-  // rendered 
+  // rendered
    handleIncrement = counter => {
     //  console.log(counter);
     const counters = [...this.state.counters];
@@ -46,7 +46,16 @@ class App extends Component {
     // counters[0] = {...counter};
     // counters[0].value++; // we should not modify the state directly
     // console.log(this.state.counters[0]);
- };
+ }; 
+
+ handleDecrement = counter => {
+  //  console.log(counter);
+  const counters = [...this.state.counters];
+  const index = counters.indexOf(counter);
+  counters[index] = {...counter};
+  counters[index].value--; 
+  this.setState({counters});
+ }
 
  handleDelete = (counterId) => {
     // console.log('Event handler called', counterId);
@@ -61,7 +70,8 @@ class App extends Component {
      this.setState({ counters});
  };
 
-  render() { 
+  render() {  
+    console.log('App- Rendered');
     return ( 
       <React.Fragment>
         <main className="container">
@@ -70,7 +80,8 @@ class App extends Component {
           <Counters 
           counters ={this.state.counters}
           onDelete ={this.handleDelete}
-          onIncrement ={this.handleIncrement}
+          onIncrement ={this.handleIncrement} 
+          onDecrement ={this.handleDecrement}
           onReset = {this.handleReset}/> 
         </main>
       </React.Fragment>
